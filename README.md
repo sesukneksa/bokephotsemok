@@ -1,1 +1,1 @@
-# bokephotsemok
+# [bokephotsemok](https://bokephotsemok.pages.dev)
