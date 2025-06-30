@@ -203,15 +203,12 @@ const breadcrumbs = [
   { name: `Pencarian: ${displayQuery}`, url: null },
 ];
 
-const pageCanonicalUrl = Astro.url.href;
-
 ---
 
 <Layout
   title={`${displayQuery} di ${nama} | Page ${currentPage}`}
   description={`${displayQuery} ${desk} di ${nama}. Page ${currentPage}.`}
   preconnectDomains={preconnectDomains}
-  canonicalUrl={pageCanonicalUrl}
 >
   <main class="search-page" itemscope itemtype="http://schema.org/SearchResultsPage">
     <nav class="breadcrumb" aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -233,7 +230,6 @@ const pageCanonicalUrl = Astro.url.href;
     </nav>
     <h1 class="search-results-title" itemprop="headline">{`${displayQuery} di ${nama}`}</h1>
 
-    {/* Tampilkan pesan jika tidak ada query atau semua query adalah stop words */}
     {originalQuery === '' || searchWords.length === 0 ? (
       <p class="no-results-message">
         Silakan masukkan kata kunci di kolom pencarian di atas untuk memulai pencarian video.
@@ -250,7 +246,6 @@ const pageCanonicalUrl = Astro.url.href;
       </div>
     )}
 
-    {/* Section video acak hanya muncul jika TIDAK ADA hasil pencarian yang relevan */}
     {paginatedResults.length === 0 && randomPostsBelowSearch.length > 0 && (
       <section class="random-videos-section">
         <h2 class="section-title">Video Mungkin Anda Suka</h2>
